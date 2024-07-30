@@ -36,10 +36,11 @@
     --absolute-bottom-org: -5px;
     --absolute-right-org: -20px;
     
-    --width-top-elems: 240px;
-    --width-bot-elems: 495px;
+    --width-top-boxes: 240px;
+    --width-bot-boxes: 495px;
     --width-pie-chart: 150px;
     --width-white-circ: 80px;
+    --width-elements: 100%;
 
     --height-top-elems: 215px;
     --height-bot-elems: 445px;
@@ -69,9 +70,7 @@
     --angle-pie-blue-to-green: 20deg;
     --angle-pie-green-to-yellow: 315deg;
 }
-* {
-    border: 1px solid red;
-}
+
 body {
     background-color: var(--clr-body-background);
     font-family: 'Roboto';
@@ -84,29 +83,25 @@ body {
     gap: var(--gap-bw-elements);
 }
 .top-elements {
+    width: var(--width-elements);
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
-    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     gap: var(--gap-bw-elements);
 }
-.first-two {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: var(--gap-bw-elements);
-}
-.sec-two {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: var(--gap-bw-elements);
 
+.top-elements-each-pair {
+    width: calc(((var(--width-elements) - var(--gap-bw-elements)) / 2));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: var(--gap-bw-elements);
 }
 .top-new-wins, .top-win-rate, .top-new-mrr, .top-page-views {
+    min-width: 200px;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -114,8 +109,12 @@ body {
     align-items: center;
     background-color: white;
     border-radius: var(--border-radius-boxes);
-    width: var(--width-top-elems);
+    width: calc((var(--width-elements) - var(--gap-bw-elements)) / 2);
     height: var(--height-top-elems);
+}
+* {
+    border: 1px solid red;
+    box-sizing: border-box;
 }
 .each-box-title {
     position: absolute;
@@ -197,6 +196,7 @@ body {
 }  
 
 .bottom-elements {
+    width: var(--width-elements);
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -205,21 +205,20 @@ body {
     gap: var(--gap-bw-elements);
 }
 .bottom-stats-country, .bottom-mrr {
+    width: calc((var(--width-elements) - var(--gap-bw-elements)) / 2);
     position: relative;
     background-color: white;
     border-radius: var(--border-radius-boxes);
-    width: var(--width-bot-elems);
     height: var(--height-bot-elems);
 } 
 .bottom-stats-left-dollar {
+    height: 100%;
     position: absolute;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    gap: var(--gap-bottom-stats-left-dollar);
+    justify-content: space-between;
     font-size: var(--font-size-bottom-stats-left-dollar);
-    bottom: 16%;
-    left: 5%;
+    left: -50px;
 }
 .bottom-stats-dot-graph {
     position: absolute;
@@ -231,20 +230,19 @@ body {
     height: 65%;
 }
 .bottom-stats-bottom-dollar {
+    width: 100%;
+    position: absolute;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    gap: var(--gap-bottom-stats-bottom-dollar);
-    position: absolute;
     font-size: var(--font-size-bottom-stats-bottom-dollar);
-    bottom: 14%;
-    left: 16%;
+    bottom: -30px;
 }
 .bottom-stats-color-map {
     position: absolute;
-    bottom: 5%;
     width: 100%;
+    bottom: -65px;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -418,31 +416,30 @@ body {
     height: 72%;
     
 }
-.bottom-mrr-bar-chart div {
+.bottom-mrr-bar-chart .table {
     border-top: 1px solid gray;
     height: 100%;
 }
 .bottom-mrr-left-dollar {
+    height: 100%;
+    position: absolute;
     display: flex;
-    bottom: 10%;
-    height: 72%;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    position: absolute;
     font-size: var(--font-size-bottom-mrr-left-dollars);
-    bottom: 13%;
-    left: 5%;   
+    top: -17px;
+    left: -60px;
 }
 .bottom-mrr-bottom-months {
+    width: 100%;
+    position: absolute;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     gap: var(--gap-bottom-mrr-bottom-months);
-    position: absolute;
     font-size: var(--font-size-bottom-mrr-bottom-months);
-    bottom: 12%;
-    right: 8%;
+    bottom: 0;
 }
 .bottom-mrr-bar-num1 {
     position: absolute;
@@ -577,30 +574,26 @@ body {
     height: 4%;
     background-color: var(--clr-greenish);
 }
-@media (min-width: 400px) {
-    
+
+@media (max-width: 900px) {
+    .top-elements-each-pair, .bottom-stats-country, .bottom-mrr {
+        width: 100%;
+    }
+    .top-elements {
+        flex-direction: column;
+    }
+    .bottom-elements {
+        flex-direction: column;
+    }
 }
-@media (min-width: 500px) {
-    
+@media (max-width: 1000px) {
+    .country-name {
+        color: red; 
+        font-size: 1px;
+    }
 }
-@media (min-width: 600px) {
-    
-}
-@media (min-width: 700px) {
-    
-}
-@media (min-width: 800px) {
-    
-}
-@media (min-width: 900px) {
-    
-}
-@media (min-width: 1000px) {
-    
-}
-@media (min-width: 1100px) {
-    
-}
-@media (min-width: 1200px) {
-    
+@media (max-width: 1100px) {
+    .months {
+        font-size: 10px;
+    }
 }
