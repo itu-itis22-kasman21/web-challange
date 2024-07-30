@@ -47,6 +47,7 @@
     --height-pie-chart: 150px;
     --height-white-circ: 80px;
 
+    --font-size-each-title: 14px;
     --font-size-num: 50px;
     --font-size-percent: 25px;
     --font-size-vs-previous: 9px;
@@ -113,12 +114,12 @@ body {
     height: var(--height-top-elems);
 }
 * {
-    border: 1px solid red;
     box-sizing: border-box;
 }
 .each-box-title {
     position: absolute;
     font-weight: var(--font-weight-title);
+    font-size: var(--font-size-each-title);
     top: var(--absolute-top-title);
     left: var(--absolute-left-title);
     height: fit-content;
@@ -249,7 +250,7 @@ body {
     align-items: center;
     gap: var(--gap-bottom-stats-color-map);
 } 
-.bottom-stats-color-map .country-name {
+.bottom-stats-country-name {
     font-size: var(--font-size-bottom-stats-country);
 }
 .bottom-stats-each-country-circle {
@@ -574,26 +575,71 @@ body {
     height: 4%;
     background-color: var(--clr-greenish);
 }
+@media (max-width: 550px) {
+    :root {
+        --height-pie-chart: 110px;
+        --height-white-circ: 60px;
+        --width-pie-chart: 110px;
+        --width-white-circ: 60px;
+        --font-size-each-title: 15px;
+        --font-size-num: 30px;
+        --font-size-percent: 20px;
+        --font-size-vs-previous: 8px;
+    }
+}
+@media (min-width: 550px) and (max-width: 600px) {
+    :root {
+        --font-size-each-title: 17px;
+        --font-size-num: 35px;
+        --font-size-percent: 15px;
+        --font-size-vs-previous: 6px;
+    }
+}
+@media (min-width: 600px) and (max-width: 700px) {
+    :root {
+        --height-top-elems: 250px;
+        --height-bot-elems: 70vw;
+        --height-pie-chart: 150px;
+        --width-pie-chart: 150px;
+        --height-white-circ: 80px;
+        --width-white-circ: 80px;
+        --font-size-each-title: 20px;
+        --font-size-num: 40px;
+        --font-size-percent: 30px;
+        --font-size-vs-previous: 12px;
+    }
 
+}
+@media (min-width: 700px) and (max-width: 900px) {
+    :root {
+        --height-top-elems: 250px;
+        --height-bot-elems: 70vw;
+        --height-pie-chart: 180px;
+        --width-pie-chart: 180px;
+        --height-white-circ: 100px;
+        --width-white-circ: 100px;
+        --font-size-each-title: 20px;
+        --font-size-num: 50px;
+        --font-size-percent: 25px;
+        --font-size-vs-previous: 10px;
+    }
+}
 @media (max-width: 900px) {
     .top-elements-each-pair, .bottom-stats-country, .bottom-mrr {
         width: 100%;
     }
-    .top-elements {
-        flex-direction: column;
-    }
-    .bottom-elements {
+    .top-elements, .bottom-elements {
         flex-direction: column;
     }
 }
-@media (max-width: 1000px) {
-    .country-name {
-        color: red; 
-        font-size: 1px;
+@media (min-width: 900px) and (max-width: 1000px) {
+    :root {
+        --font-size-bottom-mrr-bottom-months: 11px;
+        --font-size-bottom-stats-country: 10px;    
     }
 }
-@media (max-width: 1100px) {
-    .months {
-        font-size: 10px;
+@media (min-width: 1000px) and (max-width: 1100px) {
+    :root {
+        --font-size-bottom-mrr-bottom-months: 11px;
     }
 }
