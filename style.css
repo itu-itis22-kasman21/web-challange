@@ -3,14 +3,18 @@
     --clr-top-text: #3A405A;
     --clr-greenish: #83B775;
     --clr-blueish: #7DA1D3;
-    --clr-yel: #FFC744;
     --clr-orange: #FD9F25;
+    --clr-yel: #FFC744;
+    --clr-top-donut-blue: #7DA1D3;
+    --clr-top-donut-yellow: #FFC744;
+    --clr-top-donut-green: ##83B775;
     --clr-dot-uk: #FFB75B;
-    --clr-dot-us: #EFE1F290;
+    --clr-dot-us: #EFE1F2;
     --clr-dot-aus: #FFDCAC;
     --clr-dot-can: #C9D8ED;
-    --clr-dot-av: #83B77590;
+    --clr-dot-av: #83B775;
     --clr-body-background: #F3F4F6;
+    --clr-boxes: white;
     
     --gap-bw-elements: 15px;
     --gap-bottom-stats-left-dollar: 18px;
@@ -30,22 +34,29 @@
     --absolute-top-white-circle: 50%;
     --absolute-left-white-circle: 50%;
     --absolute-top-ref: 0;
-    --absolute-left-ref: 0;
-    --absolute-top-dir: -15px;
-    --absolute-right-dir: 60px;
-    --absolute-bottom-org: -5px;
-    --absolute-right-org: -20px;
+    --absolute-left-ref: -35px;
+    --absolute-top-dir: -20px;
+    --absolute-right-dir: 50px;
+    --absolute-bottom-org: -10px;
+    --absolute-right-org: -65px;
     
     --width-top-boxes: 240px;
     --width-bot-boxes: 495px;
     --width-pie-chart: 150px;
     --width-white-circ: 80px;
     --width-elements: 100%;
+    --width-bottom-mrr-bar: 30px;
 
     --height-top-elems: 215px;
-    --height-bot-elems: 445px;
+    --height-bot-elems: 430px;
     --height-pie-chart: 150px;
     --height-white-circ: 80px;
+    --heigh-bottom-mrr-bar1: 195px;
+    --heigh-bottom-mrr-bar2: 260px;
+    --heigh-bottom-mrr-bar3: 197px;
+    --heigh-bottom-mrr-bar4: 228px;
+    --heigh-bottom-mrr-bar5: 200px;
+    --heigh-bottom-mrr-bar6: 99px;
 
     --font-size-each-title: 14px;
     --font-size-num: 50px;
@@ -75,8 +86,11 @@
 body {
     background-color: var(--clr-body-background);
     font-family: 'Roboto';
+    padding: 0;
+    margin: 0;
 }
 .all {
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -84,13 +98,14 @@ body {
     gap: var(--gap-bw-elements);
 }
 .top-elements {
-    width: var(--width-elements);
+    width: calc(var(--width-elements) - 2*var(--gap-bw-elements));
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     gap: var(--gap-bw-elements);
+    padding-top: var(--gap-bw-elements);
 }
 
 .top-elements-each-pair {
@@ -108,13 +123,10 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: white;
+    background-color: var(--clr-boxes);
     border-radius: var(--border-radius-boxes);
     width: calc((var(--width-elements) - var(--gap-bw-elements)) / 2);
     height: var(--height-top-elems);
-}
-* {
-    box-sizing: border-box;
 }
 .each-box-title {
     position: absolute;
@@ -163,12 +175,12 @@ body {
     border-radius: var(--border-radius-pie);
     margin-top: var(--margin-top-page-views);
     background: conic-gradient(         
-        var(--clr-blueish) 0deg var(--angle-pie-blue-to-green),
-        var(--clr-greenish) var(--angle-pie-blue-to-green) var(--angle-pie-green-to-yellow),
-        var(--clr-yel) var(--angle-pie-green-to-yellow) var(--angle-pie-yellow-to-blue),
-        var(--clr-blueish) var(--angle-pie-yellow-to-blue) 360deg         
+        var(--clr-top-donut-blue) 0deg var(--angle-pie-blue-to-green),
+        var(--clr-top-donut-green) var(--angle-pie-blue-to-green) var(--angle-pie-green-to-yellow),
+        var(--clr-top-donut-yellow) var(--angle-pie-green-to-yellow) var(--angle-pie-yellow-to-blue),
+        var(--clr-top-donut-blue) var(--angle-pie-yellow-to-blue) 360deg         
         );
-    }
+}
 .white-circle {
     position: absolute;
     border-radius: var(--border-radius-pie);
@@ -179,36 +191,42 @@ body {
     left: var(--absolute-left-white-circle);
     transform: translate(-50%, -50%);
 }
-.top-page-views-pie-ref, .top-page-views-pie-dir, .top-page-views-pie-org {
+#org {
     position: absolute;
-    font-size: var(--font-size-pie-tag);
+    bottom: var(--absolute-bottom-org);
+    right: var(--absolute-right-org);   
 }
-.top-page-views-pie-ref {
+#ref {
+    position: absolute;
     top: var(--absolute-top-ref);
     left: var(--absolute-left-ref);
 }
-.top-page-views-pie-dir {
+#dir {
+    position: absolute;
     top: var(--absolute-top-dir);
     right: var(--absolute-right-dir);
-}
-.top-page-views-pie-org{
-    bottom: var(--absolute-bottom-org);
-    right: var(--absolute-right-org);
 }  
+#org, #ref, #dir {
+    border: none;
+}
+#org:hover, #ref:hover, #dir:hover {
+    opacity: 0.5;
+}
 
 .bottom-elements {
-    width: var(--width-elements);
+    width: calc(var(--width-elements) - 2*var(--gap-bw-elements));
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     gap: var(--gap-bw-elements);
+    margin-bottom: var(--gap-bw-elements);
 }
 .bottom-stats-country, .bottom-mrr {
     width: calc((var(--width-elements) - var(--gap-bw-elements)) / 2);
     position: relative;
-    background-color: white;
+    background-color: var(--clr-boxes);
     border-radius: var(--border-radius-boxes);
     height: var(--height-bot-elems);
 } 
@@ -250,6 +268,15 @@ body {
     align-items: center;
     gap: var(--gap-bottom-stats-color-map);
 } 
+.bottom-stats-opacity-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+}
+.bottom-stats-opacity-buttons:hover {
+    opacity: 0.5;
+}
 .bottom-stats-country-name {
     font-size: var(--font-size-bottom-stats-country);
 }
@@ -446,8 +473,8 @@ body {
     position: absolute;
     top: 27%;
     left: 20%;
-    height: 44%;
-    width: 6%;
+    height: var(--heigh-bottom-mrr-bar1);
+    width: var(--width-bottom-mrr-bar);
     background-color: var(--clr-blueish);
 }
 .bottom-mrr-bar-num1 .yellow {
@@ -462,8 +489,8 @@ body {
 }
 .bottom-mrr-bar-num2 {
     position: absolute;
-    height: 60.5%;
-    width: 6%;
+    height: var(--heigh-bottom-mrr-bar2);
+    width: var(--width-bottom-mrr-bar);
     top: 19.5%;
     left: 32.5%;
     background-color: var(--clr-blueish);
@@ -487,8 +514,8 @@ body {
     position: absolute;
     top: 29%;
     left: 45%;
-    height: 46%;
-    width: 6%;
+    height: var(--heigh-bottom-mrr-bar3);
+    width: var(--width-bottom-mrr-bar);
     background-color: var(--clr-blueish);   
 }
 .bottom-mrr-bar-num3 .yellow {
@@ -510,8 +537,8 @@ body {
     position: absolute;
     top: 23%;
     left: 57.5%;
-    height: 53%;
-    width: 6%;
+    height: var(--heigh-bottom-mrr-bar4);
+    width: var(--width-bottom-mrr-bar);
     background-color: var(--clr-blueish);   
 }
 .bottom-mrr-bar-num4 .yellow {
@@ -533,8 +560,8 @@ body {
     position: absolute;
     top: 33.5%;
     left: 70%;
-    height: 46.5%;
-    width: 6%;
+    height: var(--heigh-bottom-mrr-bar5);
+    width: var(--width-bottom-mrr-bar);
     background-color: var(--clr-blueish);   
 }
 .bottom-mrr-bar-num5 .yellow {
@@ -556,8 +583,8 @@ body {
     position: absolute;
     top: 47%;
     left: 82.5%;
-    height: 23%;
-    width: 6%;
+    height: var(--heigh-bottom-mrr-bar6);
+    width: var(--width-bottom-mrr-bar);
     background-color: var(--clr-blueish);   
 }
 .bottom-mrr-bar-num6 .yellow {
@@ -575,7 +602,19 @@ body {
     height: 4%;
     background-color: var(--clr-greenish);
 }
-@media (max-width: 550px) {
+
+@media (max-width: 480px) {
+    :root {
+        --width-bottom-mrr-bar: 25px;
+    }
+    .top-elements-each-pair {
+        flex-direction: column;
+    }
+    .top-new-wins, .top-win-rate, .top-new-mrr, .top-page-views {
+        width: 100%;
+    }
+}
+@media (min-width: 480px) and (max-width: 550px) {
     :root {
         --height-pie-chart: 110px;
         --height-white-circ: 60px;
@@ -598,7 +637,13 @@ body {
 @media (min-width: 600px) and (max-width: 700px) {
     :root {
         --height-top-elems: 250px;
-        --height-bot-elems: 70vw;
+        --height-bot-elems: 482px;
+        --heigh-bottom-mrr-bar1: calc((482/430)*195px);
+        --heigh-bottom-mrr-bar2: calc((482/430)*260px);
+        --heigh-bottom-mrr-bar3: calc((482/430)*197px);
+        --heigh-bottom-mrr-bar4: calc((482/430)*228px);
+        --heigh-bottom-mrr-bar5: calc((482/430)*200px);
+        --heigh-bottom-mrr-bar6: calc((482/430)*99px);
         --height-pie-chart: 150px;
         --width-pie-chart: 150px;
         --height-white-circ: 80px;
@@ -613,8 +658,14 @@ body {
 @media (min-width: 700px) and (max-width: 900px) {
     :root {
         --height-top-elems: 250px;
-        --height-bot-elems: 70vw;
+        --height-bot-elems: 600px;
         --height-pie-chart: 180px;
+        --heigh-bottom-mrr-bar1: calc((600/430)*195px);
+        --heigh-bottom-mrr-bar2: calc((600/430)*260px);
+        --heigh-bottom-mrr-bar3: calc((600/430)*197px);
+        --heigh-bottom-mrr-bar4: calc((600/430)*228px);
+        --heigh-bottom-mrr-bar5: calc((600/430)*200px);
+        --heigh-bottom-mrr-bar6: calc((600/430)*99px);
         --width-pie-chart: 180px;
         --height-white-circ: 100px;
         --width-white-circ: 100px;

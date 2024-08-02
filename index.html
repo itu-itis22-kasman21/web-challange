@@ -32,9 +32,15 @@
                         <div class="each-box-title">Page Views</div>
                         <div class="top-page-views-pie">
                             <div class="white-circle"></div>
-                            <div><span class="top-page-views-pie-ref">Referral</span></div>
-                            <div><span class="top-page-views-pie-dir">Direct</span></div>
-                            <div><span class="top-page-views-pie-org">Organic Search</span></div>
+                            <button id="ref" onclick="showRef()">
+                                <div id="top-page-views-pie-ref">Referral</div>
+                            </button>
+                            <button id="dir" onclick="showDir()">
+                                <div id="top-page-views-pie-dir">Direct</div>
+                            </button>
+                            <button id="org" onclick="showOrg()">
+                                <div id="top-page-views-pie-org">Organic Search</div>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -90,14 +96,22 @@
                                 <div>$700</div>
                             </div>
                             <div class="bottom-stats-color-map">
-                                <div class="bottom-stats-dot-graph-countries-us bottom-stats-each-country-circle"></div>
-                                <div class="bottom-stats-country-name">United States</div>
-                                <div class="bottom-stats-dot-graph-countries-aus bottom-stats-each-country-circle"></div>
-                                <div class="bottom-stats-country-name">Australia</div>
-                                <div class="bottom-stats-dot-graph-countries-can bottom-stats-each-country-circle"></div>
-                                <div class="bottom-stats-country-name">Canada</div>
-                                <div class="bottom-stats-dot-graph-countries-uk bottom-stats-each-country-circle"></div>
-                                <div class="bottom-stats-country-name">United Kingdom</div>
+                                <button class="bottom-stats-opacity-buttons" onclick="showUS()">
+                                    <div class="bottom-stats-dot-graph-countries-us bottom-stats-each-country-circle"></div>
+                                    <div class="bottom-stats-country-name">United States</div>
+                                </button>
+                                <button class="bottom-stats-opacity-buttons" onclick="showAus()">
+                                    <div class="bottom-stats-dot-graph-countries-aus bottom-stats-each-country-circle"></div>
+                                    <div class="bottom-stats-country-name">Australia</div>
+                                </button>
+                                <button class="bottom-stats-opacity-buttons" onclick="showCan()">
+                                    <div class="bottom-stats-dot-graph-countries-can bottom-stats-each-country-circle"></div>
+                                    <div class="bottom-stats-country-name">Canada</div>
+                                </button>
+                                <button class="bottom-stats-opacity-buttons" onclick="showUk()">
+                                    <div class="bottom-stats-dot-graph-countries-uk bottom-stats-each-country-circle"></div>
+                                    <div class="bottom-stats-country-name">United Kingdom</div>
+                                </button>
                             </div>
                         </div>
                 </div>
@@ -175,5 +189,6 @@
                 </div>
             </div>
         </div>
+        <script src="script.js"></script>
     </body>
 </html>
