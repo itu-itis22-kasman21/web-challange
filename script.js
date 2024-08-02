@@ -51,10 +51,10 @@ function resetColors() {
 }
 
 function blurPViews(category) {
-    resetColors(); // Reset all colors first
+    resetColors();
 
     if (activePViews === category) {
-        activePViews = null; // If clicking the same button, reset the active category
+        activePViews = null; 
     } else {
         if (category === 'ref') {
             resetColors();
@@ -71,7 +71,7 @@ function blurPViews(category) {
             document.documentElement.style.setProperty('--clr-top-donut-yellow', '#FFC74450');
             document.documentElement.style.setProperty('--clr-top-donut-blue', '#83B77550');
         }
-        activePViews = category; // Set the new active category
+        activePViews = category; 
     }
 }
 
