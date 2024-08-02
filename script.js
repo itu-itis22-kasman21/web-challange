@@ -45,7 +45,7 @@ var activePViews = null;
 
 
 function resetColors() {
-    document.documentElement.style.setProperty('--clr-top-donut-blue', '#83B775');
+    document.documentElement.style.setProperty('--clr-top-donut-blue', '#83B776');
     document.documentElement.style.setProperty('--clr-top-donut-green', '#7DA1D3');
     document.documentElement.style.setProperty('--clr-top-donut-yellow', '#FFC744');
 }
